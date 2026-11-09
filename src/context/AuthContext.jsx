@@ -10,7 +10,11 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [authError, setAuthError] = useState(null);
 
-  // Check admin status in public.admin_users
+  /**
+   * Authoritative administrator verification.
+   * Client-editable user_metadata is NEVER trusted.
+   * Queries the public.admin_users table strictly.
+   */
   const verifyAdminStatus = async (currentUser) => {
     if (!currentUser) {
       setIsAdmin(false);
@@ -24,15 +28,14 @@ export function AuthProvider({ children }) {
         .maybeSingle();
 
       if (error) {
-        // If table doesn't exist yet or query fails, check user app_metadata as fallback
-        const isMetadataAdmin = currentUser.app_metadata?.role === 'admin' || currentUser.user_metadata?.role === 'admin';
-        setIsAdmin(isMetadataAdmin);
-        return isMetadataAdmin;
+        console.error('Error verifying admin authorization in admin_users:', error);
+        setIsAdmin(false);
+        return false;
       }
 
-      const authorized = data && data.role === 'admin';
-      setIsAdmin(Boolean(authorized));
-      return Boolean(authorized);
+      const authorized = Boolean(data && data.role === 'admin');
+      setIsAdmin(authorized);
+      return authorized;
     } catch (err) {
       console.error('Error verifying admin authorization:', err);
       setIsAdmin(false);

@@ -2,10 +2,10 @@
  * GitHub API Helper for Committing Generated Static Blog Files
  */
 
-function getGitHubConfig() {
+export function getGitHubConfig() {
   const token = process.env.GITHUB_TOKEN;
-  const owner = process.env.GITHUB_OWNER;
-  const repo = process.env.GITHUB_MAIN_WEBSITE_REPO;
+  const owner = process.env.GITHUB_OWNER || 'abdullahMunawarKhan';
+  const repo = process.env.GITHUB_MAIN_WEBSITE_REPO || 'Solar-Agency-';
   const branch = process.env.GITHUB_MAIN_WEBSITE_BRANCH || 'main';
 
   return { token, owner, repo, branch };
@@ -66,9 +66,19 @@ export async function getRepoFile(filePath) {
 export async function commitFilesToRepo(files, commitMessage) {
   const { token, owner, repo, branch } = getGitHubConfig();
 
-  if (!token || !owner || !repo) {
+  if (!token) {
     throw new Error(
-      'GitHub integration is not fully configured. Please set GITHUB_TOKEN, GITHUB_OWNER, and GITHUB_MAIN_WEBSITE_REPO in your environment.'
+      'GitHub publishing error: GITHUB_TOKEN environment variable is not configured. Real GitHub credentials are required for publishing.'
+    );
+  }
+  if (!owner) {
+    throw new Error(
+      'GitHub publishing error: GITHUB_OWNER environment variable is not configured.'
+    );
+  }
+  if (!repo) {
+    throw new Error(
+      'GitHub publishing error: GITHUB_MAIN_WEBSITE_REPO environment variable is not configured.'
     );
   }
 

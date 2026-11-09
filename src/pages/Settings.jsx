@@ -9,22 +9,23 @@ import {
   ShieldCheck,
   Copy,
   Check,
-  ExternalLink,
+  Server,
+  Cloud,
 } from 'lucide-react';
 
 export function Settings() {
   const { user, isAdmin, isSupabaseConfigured } = useAuth();
   const [copiedSql, setCopiedSql] = useState(false);
 
-  const siteOrigin = import.meta.env.VITE_SITE_ORIGIN || 'https://www.example.com';
+  const siteOrigin = import.meta.env.VITE_SITE_ORIGIN || 'https://www.proudindiansolar.com';
   const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'Not configured';
 
   const adminSql = `-- Run this in Supabase SQL Editor to grant admin access to an email
 INSERT INTO public.admin_users (id, email, role)
 SELECT id, email, 'admin'
 FROM auth.users
-WHERE email = '${user?.email || 'admin@example.com'}'
-ON CONFLICT (id) DO NOTHING;`;
+WHERE email = '${user?.email || 'admin@proudindiansolar.com'}'
+ON CONFLICT (id) DO UPDATE SET role = 'admin';`;
 
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
@@ -39,6 +40,41 @@ ON CONFLICT (id) DO NOTHING;`;
         <p className="text-xs text-slate-500">
           Review environment parameters, target GitHub repositories, and administrator permissions
         </p>
+      </div>
+
+      {/* Hosting & Architecture Card */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-2xs space-y-4">
+        <div className="flex items-center gap-2.5 pb-3 border-b border-slate-200">
+          <div className="p-2 bg-purple-50 text-purple-600 rounded-lg">
+            <Server className="w-5 h-5" />
+          </div>
+          <div>
+            <h3 className="text-sm font-bold text-slate-900">Hosting &amp; Deployment Architecture</h3>
+            <p className="text-xs text-slate-500">
+              Verified multi-platform hosting configuration
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <div className="flex items-center justify-between">
+              <span className="text-slate-400 font-medium">Dashboard Deployment</span>
+              <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800">Netlify</span>
+            </div>
+            <div className="font-semibold text-slate-800">React 18 + Vite &amp; Netlify Functions v2</div>
+            <p className="text-[11px] text-slate-500">Continuous deployment from Solar-Admin repo</p>
+          </div>
+
+          <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <div className="flex items-center justify-between">
+              <span className="text-slate-400 font-medium">Main Website Deployment</span>
+              <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-100 text-blue-800">Vercel</span>
+            </div>
+            <div className="font-semibold text-slate-800 truncate">abdullahMunawarKhan/Solar-Agency-</div>
+            <p className="text-[11px] text-slate-500">Production domain: https://www.proudindiansolar.com</p>
+          </div>
+        </div>
       </div>
 
       {/* Target Website & Git Settings */}

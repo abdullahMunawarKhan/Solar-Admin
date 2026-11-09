@@ -364,7 +364,7 @@ export function BlogsList() {
         message={
           publishModal.isUnpublish
             ? `Unpublishing "${publishModal.blog?.title}" will remove it from sitemap.xml and blogs.html, and commit the changes to your GitHub repository.`
-            : `Publishing "${publishModal.blog?.title}" will generate the static HTML page, update sitemap.xml & blogs.html, and trigger Netlify continuous deployment.`
+            : `Publishing "${publishModal.blog?.title}" will generate the static HTML page, update sitemap.xml & blogs.html, and trigger Vercel continuous deployment on the main website.`
         }
         confirmText={publishModal.isUnpublish ? 'Confirm Unpublish' : 'Confirm Publish'}
         cancelText="Cancel"

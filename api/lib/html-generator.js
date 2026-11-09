@@ -50,11 +50,11 @@ function escape(str) {
  * @returns {string} HTML document string
  */
 export function generateArticleHtml(blog, config = {}) {
-  const siteOrigin = (config.siteOrigin || process.env.SITE_ORIGIN || 'https://www.example.com').replace(/\/$/, '');
+  const siteOrigin = (config.siteOrigin || process.env.SITE_ORIGIN || 'https://www.proudindiansolar.com').replace(/\/$/, '');
   const blogDirectory = (config.blogDirectory || process.env.BLOG_OUTPUT_DIRECTORY || 'blog').replace(/^\/|\/$/g, '');
   
   const title = blog.title || 'Untitled Blog';
-  const metaTitle = blog.meta_title || `${title} | Blog`;
+  const metaTitle = blog.meta_title || `${title} | Proud Indian Solar`;
   const metaDescription = blog.meta_description || blog.excerpt || '';
   const canonicalUrl = blog.canonical_url || `${siteOrigin}/${blogDirectory}/${blog.slug}.html`;
   const featuredImage = blog.featured_image || `${siteOrigin}/images/default-blog.jpg`;
@@ -86,7 +86,7 @@ export function generateArticleHtml(blog, config = {}) {
     },
     'publisher': {
       '@type': 'Organization',
-      'name': 'Solar & Renewable Solutions',
+      'name': 'Proud Indian Solar',
       'url': siteOrigin,
     },
     'mainEntityOfPage': {
@@ -111,7 +111,7 @@ export function generateArticleHtml(blog, config = {}) {
   <meta property="og:title" content="${escape(metaTitle)}">
   <meta property="og:description" content="${escape(metaDescription)}">
   <meta property="og:image" content="${escape(featuredImage)}">
-  <meta property="og:site_name" content="Solar &amp; Renewable Solutions">
+  <meta property="og:site_name" content="Proud Indian Solar">
   <meta property="article:published_time" content="${escape(publishedDate)}">
   <meta property="article:modified_time" content="${escape(updatedDate)}">
   <meta property="article:section" content="${escape(category)}">
@@ -350,7 +350,7 @@ ${JSON.stringify(jsonLd, null, 2)}
     <div class="header-container">
       <a href="/" class="site-brand">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #f59e0b;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-        <span>Solar &amp; Renewable</span>
+        <span>Proud Indian Solar</span>
       </a>
       <nav class="site-nav">
         <a href="/">Home</a>
@@ -397,7 +397,7 @@ ${JSON.stringify(jsonLd, null, 2)}
   </main>
 
   <footer class="site-footer">
-    <p>&copy; ${new Date().getFullYear()} Solar &amp; Renewable Solutions. All rights reserved.</p>
+    <p>&copy; ${new Date().getFullYear()} Proud Indian Solar. All rights reserved.</p>
   </footer>
 </body>
 </html>`;
@@ -468,9 +468,9 @@ export function generateBlogsListingHtml(publishedBlogs, existingHtml = null, co
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog &amp; Solar Insights | Solar &amp; Renewable Solutions</title>
-  <meta name="description" content="Read the latest articles, solar panel maintenance tips, and renewable energy guides.">
-  <link rel="canonical" href="${(config.siteOrigin || process.env.SITE_ORIGIN || 'https://www.example.com').replace(/\/$/, '')}/blogs.html">
+  <title>Blog &amp; Solar Insights | Proud Indian Solar</title>
+  <meta name="description" content="Read the latest articles, solar panel guides, and renewable energy insights from Proud Indian Solar.">
+  <link rel="canonical" href="${(config.siteOrigin || process.env.SITE_ORIGIN || 'https://www.proudindiansolar.com').replace(/\/$/, '')}/blogs.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -492,7 +492,7 @@ export function generateBlogsListingHtml(publishedBlogs, existingHtml = null, co
 <body>
   <header class="site-header">
     <div class="header-container">
-      <a href="/" class="site-brand">Solar &amp; Renewable</a>
+      <a href="/" class="site-brand">Proud Indian Solar</a>
       <nav class="site-nav">
         <a href="/">Home</a>
         <a href="/about.html">About</a>
@@ -517,7 +517,7 @@ export function generateBlogsListingHtml(publishedBlogs, existingHtml = null, co
   </main>
 
   <footer class="site-footer">
-    <p>&copy; ${new Date().getFullYear()} Solar &amp; Renewable Solutions. All rights reserved.</p>
+    <p>&copy; ${new Date().getFullYear()} Proud Indian Solar. All rights reserved.</p>
   </footer>
 </body>
 </html>`;

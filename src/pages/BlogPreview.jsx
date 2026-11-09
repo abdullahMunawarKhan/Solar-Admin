@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { fetchBlogById } from '../services/blogs';
 import { publishBlog } from '../services/publishing';
-import { cleanHtml } from '../../api/lib/html-generator';
 import { formatDate } from '../utils/date';
 import {
   ArrowLeft,
@@ -78,7 +77,7 @@ export function BlogPreview() {
     );
   }
 
-  const defaultOrigin = (import.meta.env.VITE_SITE_ORIGIN || 'https://www.example.com').replace(/\/$/, '');
+  const defaultOrigin = (import.meta.env.VITE_SITE_ORIGIN || 'https://www.proudindiansolar.com').replace(/\/$/, '');
   const publicUrl = blog.canonical_url || `${defaultOrigin}/blog/${blog.slug}.html`;
 
   return (
@@ -185,7 +184,7 @@ export function BlogPreview() {
         <div className="border-b border-slate-200 px-6 py-4 flex items-center justify-between bg-white">
           <div className="font-extrabold text-sm text-slate-900 flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-solar-500"></div>
-            <span>Solar &amp; Renewable Solutions</span>
+            <span>Proud Indian Solar</span>
           </div>
           <div className="text-xs text-slate-500 hidden sm:flex gap-4">
             <span>Home</span>
@@ -244,13 +243,13 @@ export function BlogPreview() {
           {/* HTML Content */}
           <div
             className="prose prose-slate max-w-none text-slate-800 leading-relaxed text-base space-y-4"
-            dangerouslySetInnerHTML={{ __html: cleanHtml(blog.content_html || '') }}
+            dangerouslySetInnerHTML={{ __html: blog.content_html || '' }}
           />
         </article>
 
         {/* Mock Site Footer */}
         <div className="bg-slate-900 text-slate-400 py-8 px-6 text-center text-xs border-t border-slate-800">
-          <p>&copy; {new Date().getFullYear()} Solar &amp; Renewable Solutions. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Proud Indian Solar. All rights reserved.</p>
         </div>
       </div>
     </div>

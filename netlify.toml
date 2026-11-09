@@ -1,0 +1,36 @@
+# Netlify Configuration for Solar-Admin Dashboard
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[dev]
+  command = "npm run dev"
+  port = 8888
+  targetPort = 5173
+  publish = "dist"
+  autoLaunch = false
+
+# API route rewrites to Netlify Functions v2
+# Must be evaluated before the SPA fallback
+[[redirects]]
+  from = "/api/publish-blog"
+  to = "/.netlify/functions/publish-blog"
+  status = 200
+
+[[redirects]]
+  from = "/api/unpublish-blog"
+  to = "/.netlify/functions/unpublish-blog"
+  status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# React SPA Fallback: client-side routes directed to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
