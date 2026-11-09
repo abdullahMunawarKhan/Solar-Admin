@@ -15,6 +15,7 @@ import {
   Database,
   ExternalLink,
   RefreshCw,
+  Server,
 } from 'lucide-react';
 
 export function Dashboard() {
@@ -79,13 +80,13 @@ export function Dashboard() {
       <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden shadow-lg">
         <div className="relative z-10 max-w-2xl">
           <span className="inline-block px-3 py-1 bg-solar-500/20 text-solar-400 border border-solar-500/30 rounded-full text-xs font-semibold mb-3">
-            Solar CMS v1.0
+            Solar CMS — Proud Indian Solar
           </span>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-2 font-sans">
             Solar Blog Content Management
           </h1>
           <p className="text-sm text-slate-300 leading-relaxed mb-6">
-            Create, preview, and securely deploy static SEO-ready blog posts to your existing Netlify website with atomic Git commits.
+            Create, preview, and securely publish static SEO-ready blog posts to the live Proud Indian Solar website (hosted on Vercel) via atomic Git commits and Netlify Functions v2.
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <Link
@@ -145,7 +146,7 @@ export function Dashboard() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
             <div className="flex items-center justify-between text-xs font-bold text-slate-800">
               <span className="flex items-center gap-1.5">
@@ -154,7 +155,18 @@ export function Dashboard() {
               </span>
               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
             </div>
-            <p className="text-xs text-slate-500">PostgreSQL with Row Level Security &amp; admin policies</p>
+            <p className="text-xs text-slate-500">PostgreSQL with hardened RLS &amp; admin policies</p>
+          </div>
+
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+            <div className="flex items-center justify-between text-xs font-bold text-slate-800">
+              <span className="flex items-center gap-1.5">
+                <Server className="w-4 h-4 text-solar-600" />
+                <span>Netlify Functions v2</span>
+              </span>
+              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+            </div>
+            <p className="text-xs text-slate-500">Serverless dashboard hosting &amp; API publishing endpoints</p>
           </div>
 
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
@@ -165,18 +177,18 @@ export function Dashboard() {
               </span>
               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
             </div>
-            <p className="text-xs text-slate-500">Atomic commits to <code className="bg-white px-1 py-0.5 rounded text-[11px] font-mono">main</code> branch</p>
+            <p className="text-xs text-slate-500">Atomic commits to <code className="bg-white px-1 py-0.5 rounded text-[11px] font-mono">abdullahMunawarKhan/Solar-Agency-</code></p>
           </div>
 
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
             <div className="flex items-center justify-between text-xs font-bold text-slate-800">
               <span className="flex items-center gap-1.5">
-                <Globe className="w-4 h-4 text-solar-600" />
-                <span>Netlify Continuous Deployment</span>
+                <Globe className="w-4 h-4 text-purple-600" />
+                <span>Vercel Live Deployment</span>
               </span>
               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
             </div>
-            <p className="text-xs text-slate-500">Builds static HTML &amp; updates CDN edge caches</p>
+            <p className="text-xs text-slate-500">Main website continuous deployment at <code className="bg-white px-1 py-0.5 rounded text-[11px] font-mono">proudindiansolar.com</code></p>
           </div>
         </div>
       </div>
