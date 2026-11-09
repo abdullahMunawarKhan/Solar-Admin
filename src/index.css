@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased;
+  }
+}
+
+/* TipTap Editor Styles */
+.ProseMirror {
+  @apply min-h-[320px] p-4 outline-none text-slate-800 leading-relaxed text-base;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #94a3b8;
+  pointer-events: none;
+  height: 0;
+}
+
+.ProseMirror h1 {
+  @apply text-3xl font-bold tracking-tight text-slate-900 mt-6 mb-3;
+}
+
+.ProseMirror h2 {
+  @apply text-2xl font-semibold tracking-tight text-slate-900 mt-5 mb-2.5;
+}
+
+.ProseMirror h3 {
+  @apply text-xl font-semibold text-slate-900 mt-4 mb-2;
+}
+
+.ProseMirror p {
+  @apply mb-4 leading-relaxed;
+}
+
+.ProseMirror ul {
+  @apply list-disc list-outside pl-6 mb-4 space-y-1;
+}
+
+.ProseMirror ol {
+  @apply list-decimal list-outside pl-6 mb-4 space-y-1;
+}
+
+.ProseMirror blockquote {
+  @apply border-l-4 border-solar-500 pl-4 py-1 italic my-4 bg-solar-50/50 rounded-r text-slate-700;
+}
+
+.ProseMirror a {
+  @apply text-blue-600 underline font-medium hover:text-blue-800;
+}
+
+.ProseMirror img {
+  @apply max-w-full rounded-lg shadow-sm my-4;
+}
+
+.ProseMirror code {
+  @apply bg-slate-100 text-pink-600 px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.ProseMirror pre {
+  @apply bg-slate-900 text-slate-100 p-4 rounded-lg font-mono text-sm overflow-x-auto my-4;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
