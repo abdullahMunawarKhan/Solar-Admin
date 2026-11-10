@@ -205,7 +205,7 @@ export function BlogForm({
   return (
     <div className="max-w-6xl mx-auto space-y-6 pb-16">
       {/* Top Header / Actions Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs sticky top-20 z-20">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs sticky top-0 z-20 shadow-sm">
         <div className="flex items-center gap-3">
           <button
             type="button"

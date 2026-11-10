@@ -137,7 +137,7 @@ export function BlogPreview() {
       )}
 
       {/* Floating Control Bar */}
-      <div className="flex items-center justify-between bg-white p-4 rounded-2xl border border-slate-200 shadow-xs sticky top-20 z-20">
+      <div className="flex items-center justify-between bg-white p-4 rounded-2xl border border-slate-200 shadow-xs sticky top-0 z-20 shadow-sm">
         <button
           onClick={() => navigate(`/blogs/edit/${id}`)}
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-slate-900 px-3 py-2 rounded-lg hover:bg-slate-100"

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard,
   FileText,
@@ -16,6 +16,7 @@ import { useAuth } from '../../hooks/useAuth';
 export function Sidebar({ mobileOpen, onCloseMobile }) {
   const { user, signOut, isAdmin } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSignOut = async () => {
     await signOut();
@@ -23,11 +24,32 @@ export function Sidebar({ mobileOpen, onCloseMobile }) {
   };
 
   const navItems = [
-    { label: 'Overview', to: '/', icon: LayoutDashboard, end: true },
+    { label: 'Overview', to: '/', icon: LayoutDashboard },
     { label: 'All Blogs', to: '/blogs', icon: FileText },
     { label: 'Add New Blog', to: '/blogs/new', icon: PlusCircle },
     { label: 'Settings', to: '/settings', icon: Settings },
   ];
+
+  const isItemActive = (item) => {
+    const pathname = location.pathname;
+    if (item.to === '/') {
+      return pathname === '/';
+    }
+    if (item.to === '/blogs/new') {
+      return pathname === '/blogs/new';
+    }
+    if (item.to === '/blogs') {
+      return (
+        pathname === '/blogs' ||
+        pathname.startsWith('/blogs/edit') ||
+        pathname.startsWith('/blogs/preview')
+      );
+    }
+    if (item.to === '/settings') {
+      return pathname === '/settings';
+    }
+    return pathname === item.to;
+  };
 
   return (
     <>
@@ -67,19 +89,17 @@ export function Sidebar({ mobileOpen, onCloseMobile }) {
         <nav className="flex-1 px-4 py-6 space-y-1.5 overflow-y-auto">
           {navItems.map((item) => {
             const Icon = item.icon;
+            const active = isItemActive(item);
             return (
               <NavLink
                 key={item.to}
                 to={item.to}
-                end={item.end}
                 onClick={onCloseMobile}
-                className={({ isActive }) =>
-                  `flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                    isActive
-                      ? 'bg-solar-500 text-slate-950 font-semibold shadow-sm'
-                      : 'hover:bg-slate-800 hover:text-white text-slate-400'
-                  }`
-                }
+                className={`flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                  active
+                    ? 'bg-solar-500 text-slate-950 font-semibold shadow-sm'
+                    : 'hover:bg-slate-800 hover:text-white text-slate-400'
+                }`}
               >
                 <Icon className="w-4 h-4 shrink-0" />
                 <span>{item.label}</span>

@@ -95,23 +95,6 @@ export function BlogsList() {
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
-      {/* Top Banner and Actions */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-xl font-bold text-slate-900">Manage All Blogs</h1>
-          <p className="text-xs text-slate-500">
-            Search, filter, update drafts, and deploy static articles
-          </p>
-        </div>
-
-        <Link
-          to="/blogs/new"
-          className="inline-flex items-center gap-2 px-4 py-2 bg-solar-500 hover:bg-solar-600 text-slate-950 font-bold text-xs rounded-xl shadow-xs transition-colors self-start sm:self-auto"
-        >
-          <Plus className="w-4 h-4" />
-          <span>New Blog Article</span>
-        </Link>
-      </div>
 
       {actionNotice && (
         <div
