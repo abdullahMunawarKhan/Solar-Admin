@@ -111,6 +111,37 @@ export function AuthProvider({ children }) {
     }
   };
 
+  const resetPassword = async (email) => {
+    setAuthError(null);
+    if (!isSupabaseConfigured) {
+      throw new Error('Supabase is not configured. Please add your credentials to the .env file.');
+    }
+    const redirectUrl = `${window.location.origin}/reset-password`;
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: redirectUrl,
+    });
+    if (error) {
+      setAuthError(error.message);
+      throw error;
+    }
+    return data;
+  };
+
+  const updatePassword = async (newPassword) => {
+    setAuthError(null);
+    if (!isSupabaseConfigured) {
+      throw new Error('Supabase is not configured.');
+    }
+    const { data, error } = await supabase.auth.updateUser({
+      password: newPassword,
+    });
+    if (error) {
+      setAuthError(error.message);
+      throw error;
+    }
+    return data;
+  };
+
   const value = {
     user,
     session,
@@ -119,6 +150,8 @@ export function AuthProvider({ children }) {
     authError,
     signIn,
     signOut,
+    resetPassword,
+    updatePassword,
     isSupabaseConfigured,
     refreshAdminStatus: () => user && verifyAdminStatus(user),
   };

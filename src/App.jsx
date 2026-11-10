@@ -5,6 +5,7 @@ import { ProtectedRoute } from './components/layout/ProtectedRoute';
 import { AppLayout } from './components/layout/AppLayout';
 
 import { Login } from './pages/Login';
+import { ResetPassword } from './pages/ResetPassword';
 import { Dashboard } from './pages/Dashboard';
 import { BlogsList } from './pages/BlogsList';
 import { CreateBlog } from './pages/CreateBlog';
@@ -17,8 +18,9 @@ export default function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          {/* Public Authentication Route */}
+          {/* Public Authentication Routes */}
           <Route path="/login" element={<Login />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
 
           {/* Protected Administrator Dashboard Routes */}
           <Route
